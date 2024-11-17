@@ -1,0 +1,56 @@
+<div class="container" #container>
+    <div class="form-container sign-up-container">
+        <form [formGroup]="logUpPage">
+            <h1>Create Account</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <span>or use your email for registration</span>                
+                    <mat-form-field class="small"  >
+                        <input matInput type="text" placeholder="Name" formControlName="uname" />
+                    </mat-form-field>
+                    <mat-form-field class="small"  >
+                        <input matInput type="email" placeholder="Email" formControlName="uemail" />
+                    </mat-form-field>
+                    <mat-form-field class="small">
+                        <input matInput type="password" placeholder="Password" formControlName="password" />
+                    </mat-form-field>
+            <button (click)="signupVal()">Sign Up</button>
+        </form>
+    </div>
+    <div class="form-container sign-in-container">
+        <form [formGroup]="loginPage">
+            <h1>Sign in</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <span>or use your account</span>
+            <mat-form-field class="small"  >
+                <input matInput type="email" placeholder="Email"  formControlName="usEmail"/>
+            </mat-form-field>
+            <mat-form-field class="small">
+                <input matInput type="password" placeholder="Password" formControlName="usPassword"  />
+            </mat-form-field>
+            <a href="#">Forgot your password?</a>
+            <button (click)=signInVal()>Sign In</button>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Welcome Back!</h1>
+                <p>To keep connected with us please login with your personal info</p>
+                <button class="ghost" (click)="signIn()">Sign In</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Hello, Friend!</h1>
+                <p>Enter your personal details and start journey with us</p>
+                <button class="ghost" (click)="signUp()">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -10,14 +10,15 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from '@angular/mater
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { SampleComponent } from './sample/sample.component';
-import { provideHttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule, provideHttpClient } from '@angular/common/http';
 import {MatDialogModule} from '@angular/material/dialog'
+import { CommonService } from './service/common.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginpageComponent,
-    SampleComponent
+    SampleComponent,
    
   ],
   imports: [
@@ -29,12 +30,12 @@ import {MatDialogModule} from '@angular/material/dialog'
     ReactiveFormsModule,
      MatInputModule,
      FormsModule,
-     MatDialogModule
+     MatDialogModule,
     // MatSelectModule,
     
   ],
   providers: [
-    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},provideHttpClient(),CommonService
   ],
   bootstrap: [AppComponent]
 })

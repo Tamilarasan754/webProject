@@ -4,7 +4,7 @@ import {MatListModule} from '@angular/material/list';
 
 const formdt:any[]=[
   MatListModule,
-  MatSidenavModule
+  // MatSidenavModule
 ]
 
 @NgModule({

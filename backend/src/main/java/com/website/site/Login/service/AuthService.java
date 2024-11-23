@@ -1,7 +1,12 @@
 package com.website.site.Login.service;
 
+import java.util.List;
+
+import com.website.site.Login.entity.AuthTable;
+
 public interface AuthService {
 
-   public String saveUser(String name,String email,String password);
+   public String saveUser(AuthTable authTable);
+  public List<AuthTable> getAll();
     
 }

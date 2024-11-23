@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CommonService } from '../service/common.service';
+import { error } from 'console';
+
 
 @Component({
   selector: 'app-loginpage',
@@ -9,10 +12,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
  
 })
 export class LoginpageComponent {
+  val: any;
+  constructor(private commonService:CommonService){
+
+  }
 
 logUpPage=new FormGroup({
-  uemail:new FormControl<String|null>('',Validators.required),
-  uname:new FormControl<String|null>('',Validators.required),
+  email:new FormControl<String|null>('',Validators.required),
+  name:new FormControl<String|null>('',Validators.required),
   password:new FormControl<String|null>('',Validators.required)
 })
 loginPage=new FormGroup({
@@ -30,9 +37,31 @@ signUp() {
 }
 signupVal():void{
   console.log(this.logUpPage.value);
+  const newUser=this.logUpPage.value;
+ this.commonService.postCommonApi('/auth',newUser).subscribe({
+  next:(value:any)=>{
+    console.log(value);
+  },
+  error:(err:any)=>
+  {
+    console.error(err);
+  }
+ })
 }
 signInVal():void{
   console.log(this.loginPage.value);
+  this.demo();
+}
+demo(): void {
+  this.commonService.getCommonApi("/hello").subscribe({
+    next: (response: any) => {
+      console.log(response);
+      this.val = response.name;
+    },
+    error: (err: any) => {
+      console.warn(err);
+    }
+  });
 }
 
 }

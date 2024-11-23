@@ -1,24 +1,25 @@
 import { Component } from '@angular/core';
-import { CommonServiceService } from '../service/common-service.service';
+import { CommonService } from '../service/common.service';
 
 @Component({
   selector: 'app-sample',
   templateUrl: './sample.component.html',
-  styleUrl: './sample.component.scss'
+  styleUrls: ['./sample.component.scss'] // Corrected styleUrls property
 })
 export class SampleComponent {
-  constructor(private commonService: CommonServiceService){}
-val:string|null=null;
-  demo():void{
+  val: string | null = null;
+
+  constructor(private commonService: CommonService) { }
+
+  demo(): void {
     this.commonService.getCommonApi("/hello").subscribe({
-      next:(response:any)=>{
+      next: (response: any) => {
         console.log(response);
-        this.val=response.name
+        this.val = response.name;
       },
-      error:(err:any)=>{
+      error: (err: any) => {
         console.warn(err);
       }
-    })
+    });
   }
-
 }

@@ -7,5 +7,5 @@ import com.website.site.Login.entity.AuthTable;
 @Repository
 public interface AuthRepository extends JpaRepository<AuthTable,Integer>{
 
-    
+    AuthTable findByEmail(String email);
 }

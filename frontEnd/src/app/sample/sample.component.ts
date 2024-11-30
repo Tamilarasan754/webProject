@@ -22,4 +22,34 @@ export class SampleComponent {
       }
     });
   }
+  isActive = false;
+  resultText = '';
+
+  searchToggle(event: Event): void {
+    event.preventDefault();
+    this.isActive = !this.isActive;
+
+    if (!this.isActive) {
+      const searchInput = document.querySelector('.search-input') as HTMLInputElement;
+      if (searchInput) {
+        searchInput.value = '';
+      }
+      this.resultText = '';
+    }
+  }
+
+  submitFn(form: any, event: Event): void {
+    event.preventDefault();
+    const value = form.value.searchText.trim();
+
+    if (!value.length) {
+      this.resultText = 'Yup yup! Add some text friend :D';
+    } else {
+      this.resultText = `Yup yup! Your search text sounds like this: <b>${value}</b>`;
+    }
+  }
 }
+
+
+
+

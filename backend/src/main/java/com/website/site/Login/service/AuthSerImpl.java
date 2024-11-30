@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.website.site.Login.entity.AuthTable;
@@ -17,8 +19,12 @@ public class AuthSerImpl implements AuthService {
     @Autowired
     AuthRepository authRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public String saveUser(AuthTable authTable) {
+        authTable.setPassword(passwordEncoder.encode(authTable.getPassword()));
         authRepository.save(authTable);
         return "success";
     }
@@ -31,6 +37,15 @@ public class AuthSerImpl implements AuthService {
         authTableval = authRepository.findAll();
         return authTableval;
 
+    }
+
+    public AuthTable loadUserByUsername(String username) {
+        return authRepository.findByEmail(username);
+    }
+
+    public boolean checkPassword(AuthTable authTable, String rawPassword) {
+        boolean isMatch = passwordEncoder.matches(rawPassword, authTable.getPassword()); 
+         return isMatch;
     }
 
 }

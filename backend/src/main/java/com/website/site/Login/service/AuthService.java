@@ -8,5 +8,8 @@ public interface AuthService {
 
    public String saveUser(AuthTable authTable);
   public List<AuthTable> getAll();
+  public AuthTable loadUserByUsername(String username);
+  public boolean checkPassword(AuthTable authTable, String rawPassword);
+  
     
 }

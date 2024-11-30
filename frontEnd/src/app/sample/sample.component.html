@@ -1,8 +1,20 @@
-<div *ngIf=!(val)>
-<button (click)="demo()">HI</button>
-</div>
-
-<div *ngIf="val">
-    <app-loginpage></app-loginpage>
-
+<div class="hi">
+<div class="search-wrapper" [ngClass]="{'active': isActive}">
+    <form (ngSubmit)="submitFn(searchForm, $event)" #searchForm="ngForm">
+      <div class="input-holder">
+        <mat-form-field class="example-full-width">
+          <input matInput type="text" class="search-input" placeholder="Type to search" ngModel name="searchText" />
+        </mat-form-field>
+        <button mat-icon-button class="search-icon" (click)="searchToggle($event)">
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+      <span class="close" (click)="searchToggle($event)">
+        <mat-icon>close</mat-icon>
+      </span>
+      <div class="result-container" *ngIf="resultText">
+        <span [innerHTML]="resultText"></span>
+      </div>
+    </form>
+  </div>
 </div>

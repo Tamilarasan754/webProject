@@ -10,9 +10,11 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from '@angular/mater
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { SampleComponent } from './sample/sample.component';
-import { HttpClient, HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { HttpClient,provideHttpClient, withFetch } from '@angular/common/http';
 import {MatDialogModule} from '@angular/material/dialog'
 import { CommonService } from './service/common.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon'
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { CommonService } from './service/common.service';
      MatInputModule,
      FormsModule,
      MatDialogModule,
+     MatButtonModule,
+     MatIconModule
     // MatSelectModule,
     
   ],
